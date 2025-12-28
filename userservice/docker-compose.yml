@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: userservice-postgres
+    environment:
+      POSTGRES_DB: fitness_user_db
+      POSTGRES_USER: userservice
+      POSTGRES_PASSWORD: userservice
+    ports:
+      - "5432:5432"
+    volumes:
+      - userservice-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U userservice -d userservice"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  userservice-postgres-data:
