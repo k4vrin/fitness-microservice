@@ -3,7 +3,7 @@ package com.fitness.userservice.dto;
 import com.fitness.userservice.model.UserEntity;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @Data
 public class UserResponse {
@@ -11,8 +11,8 @@ public class UserResponse {
     private String email;
     private String firstName;
     private String lastName;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private Instant createdAt;
+    private Instant updatedAt;
 
     // Mapper method to convert from UserEntity to UserResponse
     public static UserResponse fromEntity(UserEntity userEntity) {
