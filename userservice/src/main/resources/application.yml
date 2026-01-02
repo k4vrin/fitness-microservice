@@ -1,6 +1,6 @@
 spring:
   application:
-    name: userservice
+    name: user-service
   datasource:
     url: ${USER_DB_URL:jdbc:postgresql://localhost:5432/fitness_user_db}
     username: ${USER_DB_USERNAME:userservice}
@@ -13,3 +13,8 @@ spring:
       database-platform: org.hibernate.dialect.PostgreSQLDialect
 server:
   port: ${ACTIVITY_SERVICE_PORT:8081}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
