@@ -1,0 +1,21 @@
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: ai-service-mongodb
+    environment:
+      MONGO_INITDB_DATABASE: fitness_ai_db
+      MONGO_INITDB_ROOT_USERNAME: aiservice
+      MONGO_INITDB_ROOT_PASSWORD: aiservice
+    ports:
+      - "27019:27017"
+    volumes:
+      - ai-service-mongodb-data:/data/db
+      - ./docker/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    healthcheck:
+      test: [ "CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  ai-service-mongodb-data:
