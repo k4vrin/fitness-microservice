@@ -1,4 +1,22 @@
 HELP.md
+
+### OS ###
+.DS_Store
+Thumbs.db
+
+### Env/local ###
+.env
+.env.*
+!.env.example
+
+### Logs/temp ###
+*.log
+logs/
+*.swp
+*.swo
+*.tmp
+*.bak
+
 target/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
@@ -14,11 +32,11 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
-.idea/*
+.idea/
 *.iws
 *.iml
 *.ipr
+out/
 
 ### NetBeans ###
 /nbproject/private/
