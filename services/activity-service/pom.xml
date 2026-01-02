@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.fitness</groupId>
-    <artifactId>activityservice</artifactId>
+    <artifactId>activity-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>activityservice</name>
     <description>Demo project for Spring Boot</description>
@@ -71,6 +71,16 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp-test</artifactId>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

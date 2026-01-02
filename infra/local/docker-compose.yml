@@ -1,6 +1,6 @@
 services:
   rabbitmq:
-    image: rabbitmq:latest
+    image: rabbitmq:4-management
     container_name: fitness-rabbitmq
     ports:
       - "5672:5672"
