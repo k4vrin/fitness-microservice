@@ -1,14 +1,14 @@
 package com.fitness.aiservice.config;
 
-import com.mongodb.reactivestreams.client.MongoClient;
-import com.mongodb.reactivestreams.client.MongoClients;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.mongodb.config.EnableReactiveMongoAuditing;
-import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
+import org.springframework.data.mongodb.config.EnableMongoAuditing;
+import org.springframework.data.mongodb.core.MongoTemplate;
 
 @Configuration
-@EnableReactiveMongoAuditing
+@EnableMongoAuditing
 public class MongoConfig {
 
     private static final String MONGO_URI =
@@ -21,7 +21,7 @@ public class MongoConfig {
     }
 
     @Bean
-    public ReactiveMongoTemplate reactiveMongoTemplate(MongoClient mongoClient) {
-        return new ReactiveMongoTemplate(mongoClient, DATABASE_NAME);
+    public MongoTemplate mongoTemplate(MongoClient mongoClient) {
+        return new MongoTemplate(mongoClient, DATABASE_NAME);
     }
 }
