@@ -41,4 +41,8 @@ public class UserService {
         return UserResponse.fromEntity(savedUserEntity);
 
     }
+
+    public boolean validateUser(String userId) {
+        return userRepository.existsById(userId);
+    }
 }

@@ -30,4 +30,10 @@ public class UserController {
         // Implementation to get user profile by userId
         return ResponseEntity.ok(userService.register(request));
     }
+
+    @GetMapping("/{userId}/validate")
+    public ResponseEntity<Boolean> validateUser(@PathVariable String userId) {
+        boolean isValid = userService.validateUser(userId);
+        return ResponseEntity.ok(isValid);
+    }
 }

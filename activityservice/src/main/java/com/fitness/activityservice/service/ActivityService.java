@@ -12,9 +12,13 @@ import java.util.List;
 public class ActivityService {
 
     private final ActivityRepository repository;
+    private final UserValidationService userValidationService;
 
 
     public Activity trackActivity(Activity activity) {
+        if (!userValidationService.isValidUser(activity.getUserId())) {
+            throw new RuntimeException("Invalid user ID: " + activity.getUserId());
+        }
         return repository.save(activity);
     }
 
