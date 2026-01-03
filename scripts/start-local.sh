@@ -24,6 +24,7 @@ compose_up() {
 }
 
 compose_up "${ROOT_DIR}/infra/local/docker-compose.yml"
+compose_up "${ROOT_DIR}/infra/local/keycloak/docker-compose.yml"
 compose_up "${ROOT_DIR}/services/activity-service/docker-compose.yml"
 compose_up "${ROOT_DIR}/services/ai-service/docker-compose.yml"
 compose_up "${ROOT_DIR}/services/user-service/docker-compose.yml"
