@@ -1,20 +1,5 @@
 spring:
   application:
     name: user-service
-  datasource:
-    url: ${USER_DB_URL:jdbc:postgresql://localhost:5432/fitness_user_db}
-    username: ${USER_DB_USERNAME:userservice}
-    password: ${USER_DB_PASSWORD:userservice}
-    driver-class-name: org.postgresql.Driver
-  jpa:
-    hibernate:
-      # DDL Auto:
-      ddl-auto: ${USER_JPA_DDL_AUTO:update}
-      database-platform: org.hibernate.dialect.PostgreSQLDialect
-server:
-  port: ${ACTIVITY_SERVICE_PORT:8081}
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
+  config:
+    import: optional:configserver:http://localhost:8888

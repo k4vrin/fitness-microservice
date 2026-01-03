@@ -1,0 +1,30 @@
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.cloud.gateway.route.RouteDefinitionLocator: DEBUG
+
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: user-service
+              uri: lb://user-service
+              predicates:
+                - Path=/api/users/**
+            - id: ai-service
+              uri: lb://ai-service
+              predicates:
+                - Path=/api/recommendations/**
+            - id: activity-service
+              uri: lb://activity-service
+              predicates:
+                - Path=/api/activities/**
+
+server:
+  port: 8080
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
