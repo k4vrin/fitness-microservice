@@ -28,13 +28,14 @@ public class UserService {
     public UserResponse register(RegisterRequest request) {
 
         if (userRepository.existsByEmail(request.getEmail())) {
-            throw new IllegalArgumentException("Email already in use");
+            UserEntity userEntity = userRepository.findByEmail(request.getEmail());
+            return UserResponse.fromEntity(userEntity);
         }
-
 
         UserEntity userEntity = new UserEntity();
         userEntity.setEmail(request.getEmail());
         userEntity.setFirstName(request.getFirstName());
+        userEntity.setKeycloakId(request.getKeycloakId());
         userEntity.setLastName(request.getLastName());
         userEntity.setPassword(request.getPassword());
 
@@ -44,8 +45,8 @@ public class UserService {
 
     }
 
-    public boolean validateUser(String userId) {
-        log.info("Validating user {}", userId);
-        return userRepository.existsById(userId);
+    public boolean validateUser(String keycloakId) {
+        log.info("Validating user {}", keycloakId);
+        return userRepository.existsByKeycloakId(keycloakId);
     }
 }

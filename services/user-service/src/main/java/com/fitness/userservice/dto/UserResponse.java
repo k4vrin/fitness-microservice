@@ -9,6 +9,7 @@ import java.time.Instant;
 public class UserResponse {
     private String id;
     private String email;
+    private String keycloakId;
     private String firstName;
     private String lastName;
     private Instant createdAt;
@@ -19,6 +20,7 @@ public class UserResponse {
         UserResponse response = new UserResponse();
         response.setId(userEntity.getId());
         response.setEmail(userEntity.getEmail());
+        response.setKeycloakId(userEntity.getKeycloakId());
         response.setFirstName(userEntity.getFirstName());
         response.setLastName(userEntity.getLastName());
         response.setCreatedAt(userEntity.getCreatedAt());

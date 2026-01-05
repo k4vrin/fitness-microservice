@@ -5,12 +5,14 @@ import com.fitness.userservice.dto.UserResponse;
 import com.fitness.userservice.service.UserService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/users")
 @AllArgsConstructor
+@Slf4j
 public class UserController {
 
     private UserService userService;
@@ -31,9 +33,10 @@ public class UserController {
         return ResponseEntity.ok(userService.register(request));
     }
 
-    @GetMapping("/{userId}/validate")
-    public ResponseEntity<Boolean> validateUser(@PathVariable String userId) {
-        boolean isValid = userService.validateUser(userId);
+    @GetMapping("/{keycloakId}/validate")
+    public ResponseEntity<Boolean> validateUser(@PathVariable String keycloakId) {
+        boolean isValid = userService.validateUser(keycloakId);
+        log.info("UserController Validate user with id {} is {}", keycloakId, isValid);
         return ResponseEntity.ok(isValid);
     }
 }

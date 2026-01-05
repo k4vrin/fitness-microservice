@@ -1,4 +1,4 @@
-package com.fitness.userservice.dto;
+package com.fitness.gateway.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
